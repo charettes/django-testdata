@@ -1,0 +1,7 @@
+syntax:glob
+*.py[co]
+dist/
+django_testdata.egg-info/*
+build/
+.coverage
+.tox
