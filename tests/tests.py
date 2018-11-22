@@ -10,6 +10,14 @@ from testdata import testdata, wrap_testdata
 from .models import Author
 
 
+class UnDeepCopyAble(object):
+    def __repr__(self):
+        return str('<UnDeepCopyAble object>')
+
+    def __deepcopy__(self, memo):
+        raise TypeError('Not deep copyable.')
+
+
 def assert_no_queries(test):
     @wraps(test)
     def inner(self):
@@ -20,6 +28,9 @@ def assert_no_queries(test):
 
 class TestDataTests(TestCase):
     wrapper = testdata
+    undeepcopyable_message = (
+        "<UnDeepCopyAble object> must be deepcopy'able to be wrapped in testdata."
+    )
 
     @classmethod
     def setUpTestData(cls):
@@ -35,6 +46,7 @@ class TestDataTests(TestCase):
             ),
             cls.brave_new_world,
         ])
+        cls.unpickleable = cls.wrapper(UnDeepCopyAble())
 
     @assert_no_queries
     def access_testdata(self):
@@ -74,8 +86,16 @@ class TestDataTests(TestCase):
         self.assertIs(self.books[0].author, self.aldous)
         self.assertIs(self.books[-1], self.brave_new_world)
 
+    def test_undeepcopyable(self):
+        with self.assertRaisesMessage(TypeError, self.undeepcopyable_message):
+            self.unpickleable
+
 
 class WrapTestDataTests(TestDataTests):
+    undeepcopyable_message = (
+        "tests.tests.WrapTestDataTests.unpickleable must be deepcopy'able to be wrapped in testdata."
+    )
+
     @staticmethod
     def wrapper(wrapped):
         return wrapped

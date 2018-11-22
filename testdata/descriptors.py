@@ -31,7 +31,20 @@ class testdata(object):
             return self.data
 
         memo = self.get_memo(instance)
-        data = copy.deepcopy(self.data, memo)
+        try:
+            data = copy.deepcopy(self.data, memo)
+        except TypeError:
+            if self.name is not None:
+                raise TypeError(
+                    "%s.%s.%s must be deepcopy'able to be wrapped in testdata." % (
+                        owner.__module__,
+                        owner.__name__,
+                        self.name,
+                    )
+                )
+            raise TypeError(
+                "%r must be deepcopy'able to be wrapped in testdata." % self.data
+            )
         if self.name is not None:
             setattr(instance, self.name, data)
             # Avoid keeping a reference to cached attributes on teardown as it
