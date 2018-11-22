@@ -38,13 +38,13 @@ Installation
 Motivation
 ----------
 
-Django 1.8 introduced `TestCase.setUpTestData` to allow costly generation of
+Django 1.8 introduced ``TestCase.setUpTestData`` to allow costly generation of
 model fixtures to be executed only once per test class in order to speed up
 testcase instances execution.
 
-One gotcha of `setUpTestData` though is that test instances all share the same
+One gotcha of ``setUpTestData`` though is that test instances all share the same
 model instances and have to be careful not to alter them to prevent breaking
-test isolation. Per Django's `setUpTestData` `documentation`_::
+test isolation. Per Django's `documentation`_::
 
     Be careful not to modify any objects created in setUpTestData() in your
     test methods. Modifications to in-memory objects from setup work done at
@@ -52,14 +52,14 @@ test isolation. Per Django's `setUpTestData` `documentation`_::
     them, you could reload them in the setUp() method with refresh_from_db(),
     for example.
 
-Reloading objects in `setUp()` certainly works but it kind of defeats the
+Reloading objects in ``setUp()`` certainly works but it kind of defeats the
 purpose of avoiding database hits to speed up tests execution in the first
 place. It makes little sense to fetch model instances from the database
 given all 
 
 This package offers a different alternative to work around this quirk of
-`setUpTestData`. Instead of reloading objects from the database the model
-instances assigned as class attributes during `setUpTestData` are lazily deep
+``setUpTestData``. Instead of reloading objects from the database the model
+instances assigned as class attributes during ``setUpTestData`` are lazily deep
 copied on testcase instance accesses from their original definition. All of
 deep copying is done by sharing a `memo`_ which makes sure in-memory relationships
 between objects is preserved.
@@ -70,7 +70,7 @@ between objects is preserved.
 Usage
 -----
 
-The test data can be either wrapped manually by using `testdata`.
+The test data can be either wrapped manually by using ``testdata``.
 
 .. code:: python
 
@@ -89,7 +89,7 @@ The test data can be either wrapped manually by using `testdata`.
                 title='Nesnesitelná lehkost bytí',
             ))
 
-Or automatically by using the `wrap_testdata` decorator.
+Or automatically by using the ``wrap_testdata`` decorator.
 
 .. code:: python
 
@@ -109,12 +109,12 @@ Or automatically by using the `wrap_testdata` decorator.
                 title='Nesnesitelná lehkost bytí',
             )
 
-Under the hood `wrap_testdata` simply wraps all attributes added to `cls`
-during the execution of `setUpTestData()` into `testdata(attr, name=name)`
+Under the hood ``wrap_testdata`` simply wraps all attributes added to `cls`
+during the execution of ``setUpTestData()`` into ``testdata(attr, name=name)``
 which has also the nice side effect of speeding subsequent accesses.
 
 Once test data is wrapped the testcase instances methods can alter objects
-retrieved from `self` without worrying about cross-tests isolation.
+retrieved from ``self`` without worrying about cross-tests isolation.
 
 .. code:: python
 
