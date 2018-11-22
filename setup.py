@@ -12,7 +12,7 @@ setup(
     version=testdata.__version__,
     description='Django application providing isolation for model instances created during `setUpTestData`.',
     long_description=long_description,
-    url='https://github.com/charettes/django-test-data',
+    url='https://github.com/charettes/django-testdata',
     author='Simon Charette.',
     author_email='charette.s+testdata@gmail.com',
     license='MIT',
