@@ -28,6 +28,10 @@ django-testdata
 Django application providing isolation for model instances created during
 `setUpTestData`.
 
+**Note:**  This package has been merged into Django in `PR
+#12608 <https://github.com/django/django/pull/12608>`__, which will be released
+in Django 3.2.
+
 Installation
 ------------
 
