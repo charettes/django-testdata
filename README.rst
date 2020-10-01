@@ -94,7 +94,7 @@ Or automatically by using the ``wrap_testdata`` decorator.
 .. code:: python
 
     from django.test import TestCase
-    from testdata import testdata
+    from testdata import wrap_testdata
 
     from .models import Author, Book
 
@@ -119,7 +119,7 @@ retrieved from ``self`` without worrying about cross-tests isolation.
 .. code:: python
 
     from django.test import TestCase
-    from testdata import testdata
+    from testdata import wrap_testdata
 
     from .models import Author, Book
 
