@@ -55,7 +55,7 @@ test isolation. Per Django's `documentation`_::
 Reloading objects in ``setUp()`` certainly works but it kind of defeats the
 purpose of avoiding database hits to speed up tests execution in the first
 place. It makes little sense to fetch model instances from the database
-given all 
+given all the data was already in-memory previously.
 
 This package offers a different alternative to work around this quirk of
 ``setUpTestData``. Instead of reloading objects from the database the model
@@ -63,6 +63,10 @@ instances assigned as class attributes during ``setUpTestData`` are lazily deep
 copied on testcase instance accesses from their original definition. All of
 deep copying is done by sharing a `memo`_ which makes sure in-memory relationships
 between objects is preserved.
+
+The implementation in this package has been merged into Django core in
+`ticket #31395 <https://code.djangoproject.com/ticket/31395#ticket>`__, and
+will be released in Django 3.2. This package can thus be considered a backport.
 
 .. _documentation: https://docs.djangoproject.com/en/2.1/topics/testing/tools/#django.test.TestCase.setUpTestData
 .. _memo: https://docs.python.org/3/library/copy.html?highlight=memo#copy.deepcopy
