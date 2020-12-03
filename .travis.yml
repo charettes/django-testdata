@@ -10,8 +10,6 @@ matrix:
   include:
   - python: 2.7
     env: TOXENV=py27-1.11
-  - python: 3.4
-    env: TOXENV=py34-1.11
   - python: 3.5
     env: TOXENV=py35-1.11
   - python: 3.5
@@ -33,6 +31,10 @@ matrix:
     dist: xenial
     sudo: true
   - python: 3.6
+    env: TOXENV=py36-3.1
+    dist: xenial
+    sudo: true
+  - python: 3.6
     env: TOXENV=py36-master
     dist: xenial
     sudo: true
@@ -49,12 +51,58 @@ matrix:
     dist: xenial
     sudo: true
   - python: 3.7
+    env: TOXENV=py37-3.1
+    dist: xenial
+    sudo: true
+  - python: 3.7
     env: TOXENV=py37-master
+    dist: xenial
+    sudo: true
+  - python: 3.8
+    env: TOXENV=py38-2.1
+    dist: xenial
+    sudo: true
+  - python: 3.8
+    env: TOXENV=py38-2.2
+    dist: xenial
+    sudo: true
+  - python: 3.8
+    env: TOXENV=py38-3.0
+    dist: xenial
+    sudo: true
+  - python: 3.8
+    env: TOXENV=py38-3.1
+    dist: xenial
+    sudo: true
+  - python: 3.8
+    env: TOXENV=py38-master
+    dist: xenial
+    sudo: true
+  - python: 3.9
+    env: TOXENV=py39-2.1
+    dist: xenial
+    sudo: true
+  - python: 3.9
+    env: TOXENV=py39-2.2
+    dist: xenial
+    sudo: true
+  - python: 3.9
+    env: TOXENV=py39-3.0
+    dist: xenial
+    sudo: true
+  - python: 3.9
+    env: TOXENV=py39-3.1
+    dist: xenial
+    sudo: true
+  - python: 3.9
+    env: TOXENV=py39-master
     dist: xenial
     sudo: true
   allow_failures:
   - env: TOXENV=py36-master
   - env: TOXENV=py37-master
+  - env: TOXENV=py38-master
+  - env: TOXENV=py39-master
 install:
 - pip install tox coveralls
 script:
