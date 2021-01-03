@@ -9,9 +9,8 @@ django-testdata
     :target: https://pypi.python.org/pypi/django-testdata/
     :alt: Latest Version
 
-.. image:: https://travis-ci.org/charettes/django-testdata.svg?branch=master
-    :target: https://travis-ci.org/charettes/django-testdata
-    :alt: Build Status
+.. image:: https://img.shields.io/github/workflow/status/charettes/django-testdata/CI/master
+   :target: https://github.com/charettes/django-testdata/actions?workflow=CI
 
 .. image:: https://coveralls.io/repos/charettes/django-testdata/badge.svg?branch=master
     :target: https://coveralls.io/r/charettes/django-testdata?branch=master
