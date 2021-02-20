@@ -18,7 +18,7 @@ setup(
     author_email="charette.s+testdata@gmail.com",
     license="MIT",
     classifiers=[
-        "Development Status :: 5 - Production/Stable",
+        "Development Status :: 7 - Inactive",
         "Environment :: Web Environment",
         "Framework :: Django",
         "Framework :: Django :: 1.11",
