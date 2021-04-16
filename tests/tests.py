@@ -2,12 +2,17 @@
 from __future__ import unicode_literals
 
 from functools import wraps
+from unittest import SkipTest
 
+import django
 from django.test import TestCase
 
 from testdata import testdata, wrap_testdata
 
 from .models import Author
+
+if django.VERSION >= (3, 2):
+    raise SkipTest("Django 3.2 includes functionality.")
 
 
 class UnDeepCopyAble(object):
