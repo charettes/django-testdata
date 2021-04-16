@@ -1,9 +1,10 @@
 from __future__ import unicode_literals
 
 from functools import wraps
-from .descriptors import testdata
 
 import django
+
+from .descriptors import testdata
 
 
 def wrap_testdata(setup):
